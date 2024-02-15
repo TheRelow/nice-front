@@ -1,0 +1,69 @@
+$fontSize: 16px;
+$fontSizeXl: 0.8333vw;
+$font-family: 'Montserrat', sans-serif;
+
+$light: #fff;
+$dark: #090E36;
+$secondary: #354554;
+$bg-light: #F4F8FE;
+$bg-dark: #050C44;
+
+$gray900: #000;
+$gray800: #18181c;
+$gray700: #1f1f25;
+$gray600: #23232a;
+$gray500: #2f2f38;
+$gray400: #3c3c44;
+$gray300: #6e6e83;
+$gray200: #a1a1b7;
+$gray100: #cdcdde;
+$gray50: #f5f5f7;
+
+$primary: #0061d9;
+$primary900: #0e41ba;
+$primary800: $primary;
+$primary700: #0073eb;
+$primary600: #0086ff;
+$primary500: #0095ff;
+$primary400: #22a5ff;
+$primary300: #55b5ff;
+$primary200: #8ac5ff;
+$primary100: #b9deff;
+$primary50: #e2f2ff;
+
+$accent: #ff0a0a;
+$accent900: #b40000;
+$accent800: $accent;
+$accent700: #ff2020;
+$accent600: #ff3d3e;
+$accent500: #fc5254;
+$accent400: #fb696c;
+$accent300: #f8999c;
+$accent200: #f7b1b5;
+$accent100: #f6c8cd;
+$accent50: #f5e1e6;
+
+$containerWidth: 81.875rem;
+$containerOffset: 1.25rem;
+$headerHeight: 5.375rem;
+$headerBottomOffset: 2.5rem;
+
+$buttonHeight: 3rem;
+$buttonHeightXL: 4.2rem;
+$buttonHeightL: 3.625rem;
+$buttonHeightS: 2.5rem;
+$buttonHeightXS: 1.8rem;
+$buttonContentGap: 0.5rem;
+
+$fieldHeight: $buttonHeight;
+$fieldBorderRadius: 0.75rem;
+$fieldBorderColor: $gray200;
+
+$cardRadius: 0.625rem;
+$cardBg: $light;
+$cardPaddingTopBottom: 0.625rem;
+$cardPaddingRightLeft: 1rem;
+$cardGap: 0.625rem;
+$cardTitleGap: 0.3125rem;
+$cardFontSize: 1.125rem;
+$cardFontWeight: 700;
