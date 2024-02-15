@@ -1,11 +1,9 @@
 <script setup lang="ts">
-definePageMeta({
-  name: 'home'
-})
+
 </script>
 
 <template>
-  <h1>Index</h1>
+  <NuxtPage></NuxtPage>
 </template>
 
 <style scoped>

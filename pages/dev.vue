@@ -3,7 +3,7 @@
 </script>
 
 <template>
-qwe
+  <NuxtPage></NuxtPage>
 </template>
 
 <style scoped>

@@ -5,9 +5,24 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/_variables.scss" as *;'
+          additionalData: '@use "~/assets/styles/_variables.scss" as *;'
         }
       }
     }
+  },
+  app: {
+    // pageTransition: {
+    //   name: 'page',
+    //   mode: 'out-in',
+    // },
+    head: {
+      style: [
+        'background-color: #2f2f38;'
+      ]
+    }
+  },
+  components: {
+    global: true,
+    dirs: ['~/components']
   }
 })
