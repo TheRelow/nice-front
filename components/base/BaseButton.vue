@@ -158,16 +158,16 @@ const classes = computed((): string[] => {
   &_tertiary {
     background-color: transparent;
     border-color: transparent;
-    color: $primary;
+    color: $primary600;
 
     &:hover {
-      background-color: $primary50;
-      border-color: $primary50;
+      background-color: rgba(255,255,255, 0.1);
+      border-color: rgba(255,255,255, 0.1);
     }
 
     &:active {
-      background-color: $primary100;
-      border-color: $primary100;
+      background-color: rgba(255,255,255, 0.2);
+      border-color: rgba(255,255,255, 0.2);
       color: $primary900;
     }
   }

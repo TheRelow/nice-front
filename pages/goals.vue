@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <div>
-    <NuxtPage></NuxtPage>
-  </div>
+  <h1>Goals</h1>
 </template>
 
 <style scoped>

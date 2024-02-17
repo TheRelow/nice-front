@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -10,19 +11,25 @@ export default defineNuxtConfig({
       }
     }
   },
+
   app: {
-    // pageTransition: {
-    //   name: 'page',
-    //   mode: 'out-in',
-    // },
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in',
+    },
     head: {
       style: [
         'background-color: #2f2f38;'
       ]
     }
   },
-  components: {
-    global: true,
-    dirs: ['~/components']
-  }
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    }
+  ],
+
+  modules: ["@pinia/nuxt"]
 })

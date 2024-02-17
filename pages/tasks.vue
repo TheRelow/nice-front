@@ -1,10 +1,9 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <div>
-    <NuxtPage></NuxtPage>
+    <NuxtPage />
   </div>
 </template>
 
