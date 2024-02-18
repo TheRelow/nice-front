@@ -12,10 +12,10 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    pageTransition: {
-      name: 'page',
-      mode: 'out-in',
-    },
+    // pageTransition: {
+    //   name: 'page',
+    //   mode: 'out-in',
+    // },
     head: {
       style: [
         'background-color: #2f2f38;'

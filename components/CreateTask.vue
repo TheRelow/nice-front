@@ -14,15 +14,15 @@ function createTask() {
 
 <template>
   <form @submit.prevent="createTask" class="create-task">
-    <BaseInput v-model="taskTitle" full-width></BaseInput>
-    <BaseButton size="m">create</BaseButton>
+    <v-text-field v-model="taskTitle" variant="solo" density="compact" single-line hide-details placeholder="Task title"></v-text-field>
+    <v-btn @click="createTask" variant="tonal" rounded="lg" size="large">create</v-btn>
   </form>
 </template>
 
 <style scoped lang="scss">
 .create-task {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
 }
 .create-task__input {

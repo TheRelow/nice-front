@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import {useTaskStore} from "~/store/taskStore";
 
+const items = ref([
+  { title: 'Delete', action: deleteTask },
+])
+
 const taskStore = useTaskStore()
 const props = defineProps<{
   id: number
@@ -45,13 +49,26 @@ function toggleTaskStatus() {
       <template v-if="!isEditing">
         {{ task.title }}
       </template>
-      <BaseInput no-offset full-width v-model="editingValue" v-else></BaseInput>
+      <v-text-field v-else variant="solo" density="compact" single-line hide-details v-model="editingValue"></v-text-field>
       <div class="task__controls">
-        <BaseButton @click="deleteTask" type="tertiary" size="xs" icon color="accent-light"><BaseIcon color="inherit" icon="delete"></BaseIcon></BaseButton>
-        <BaseButton @click="startEditing" type="tertiary" size="xs" icon v-if="!isEditing"><BaseIcon color="inherit" icon="pencil"></BaseIcon></BaseButton>
+        <v-menu>
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" icon="mdi-cog" variant="tonal" size="small"></v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+                v-for="(item, index) in items"
+                :key="index"
+                :value="index"
+            >
+              <v-list-item-title @click="item.action">{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <v-btn @click="startEditing" v-if="!isEditing" icon="mdi-pencil" variant="tonal" size="small"></v-btn>
         <template v-else>
-          <BaseButton @click="finishEditing" type="tertiary" size="xs" icon><BaseIcon color="inherit" icon="check"></BaseIcon></BaseButton>
-          <BaseButton @click="cancelEditing" type="tertiary" size="xs" icon><BaseIcon color="inherit" icon="cancel"></BaseIcon></BaseButton>
+          <v-btn @click="finishEditing" icon="mdi-check" variant="tonal" size="small"></v-btn>
+          <v-btn @click="cancelEditing" icon="mdi-cancel" variant="tonal" size="small"></v-btn>
         </template>
       </div>
     </div>
