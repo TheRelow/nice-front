@@ -4,7 +4,11 @@ import {gsap} from "gsap"
 const navRoutes = [
   {
     to: '/',
-    title: '/',
+    icon: 'home',
+  },
+  {
+    to: '/folders',
+    icon: 'folder',
   },
   {
     to: '/tasks',
@@ -16,16 +20,21 @@ const navRoutes = [
   },
   {
     to: '/school',
-    icon: 'school-outline',
+    icon: 'school',
+  },
+  {
+    to: '/blog',
+    icon: 'post',
   },
   {
     to: '/dev',
-    title: 'dev',
+    icon: 'cogs',
   },
 ]
 
 const route = useRoute()
 
+const navAppSettings = ref()
 const fileContent = ref()
 const fileNavigation = ref()
 
@@ -78,20 +87,26 @@ watch(fileNavigationStyles, (val) => {
 <template>
   <div class="system-bar"></div>
   <div class="app">
-    <nav class="navigation">
-      <ul class="navigation__list">
-        <li v-for="item of navRoutes" class="navigation__item">
-          <NuxtLink :to="item.to" class="navigation__link">
-            <template v-if="item.icon">
+    <div class="navigation">
+      <nav>
+        <ul>
+          <li v-for="item of navRoutes" class="navigation__item">
+            <NuxtLink :to="item.to" class="navigation__link">
               <BaseIcon color="inherit" :icon="item.icon" />
-            </template>
-            <template v-else-if="item.title">
-              {{ item.title }}
-            </template>
-          </NuxtLink>
-        </li>
-      </ul>
-    </nav>
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <nav>
+        <ul>
+          <li v-for="item of navAppSettings" class="navigation__item">
+            <NuxtLink :to="item.to" class="navigation__link">
+              <BaseIcon color="inherit" :icon="item.icon" />
+            </NuxtLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
     <div class="section">
       <div class="section__navigation"></div>
       <div class="section__content file">
@@ -120,6 +135,9 @@ watch(fileNavigationStyles, (val) => {
   background-color: $gray500;
 }
 .navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 72px;
   height: 100%;
   background-color: $gray800;

@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div>
-    <NuxtPage></NuxtPage>
-  </div>
+  <main>
+    <ContentDoc />
+  </main>
 </template>
 
 <style scoped>

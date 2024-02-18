@@ -1,11 +1,12 @@
 <script setup lang="ts">
+definePageMeta({
+  name: 'folders'
+})
 
 </script>
 
 <template>
-  <div>
-    <NuxtPage></NuxtPage>
-  </div>
+  <h1>Folders</h1>
 </template>
 
 <style scoped>
