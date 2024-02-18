@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <h1>Index</h1>
+  <h1>{{ $t('Home page') }}</h1>
 </template>
 
 <style scoped>
