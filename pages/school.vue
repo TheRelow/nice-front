@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>School</h1>
+  <h1>{{ $t('School') }}</h1>
 </template>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Packages</h1>
+    <h1>{{ $t('Packages') }}</h1>
     <BaseButtonsList>
       <BaseButton v-for="item of baseComponents" tag="nuxt-link" :to="{name: `package_${item}`}">{{ item }}</BaseButton>
     </BaseButtonsList>

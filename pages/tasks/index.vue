@@ -22,9 +22,9 @@ const doneTasks = computed((): Task[]=>{
 <template>
   <div>
     <CreateTask></CreateTask>
-    <h1>ToDo</h1>
+    <h1>{{ $t('ToDo') }}</h1>
     <TaskList :tasks="toDoTasks"></TaskList>
-    <h1>Done</h1>
+    <h1>{{ $t('Done') }}</h1>
     <TaskList :tasks="doneTasks"></TaskList>
   </div>
 </template>

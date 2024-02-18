@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 
 <template>
-  <h1>Folders</h1>
+  <h1>{{ $t('Folders') }}</h1>
 </template>
 
 <style scoped>
