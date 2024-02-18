@@ -11,5 +11,5 @@
 definePageMeta({
   name: 'packages'
 })
-const baseComponents = ['vuedraggable', 'nuxt-ui']
+const baseComponents = ['vuedraggable', 'vuetify']
 </script>

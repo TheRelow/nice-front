@@ -11,6 +11,7 @@ definePageMeta({
       <BaseButton tag="nuxt-link" :to="{name: 'components'}">components</BaseButton>
       <BaseButton tag="nuxt-link" :to="{name: 'packages'}">packages</BaseButton>
     </BaseButtonsList>
+    <v-switch label="Switch"></v-switch>
   </div>
 </template>
 
