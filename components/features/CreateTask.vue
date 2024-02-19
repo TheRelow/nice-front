@@ -22,6 +22,7 @@ function createTask() {
 <style scoped lang="scss">
 .create-task {
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 12px;
 }

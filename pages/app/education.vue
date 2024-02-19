@@ -1,11 +1,11 @@
 <script setup lang="ts">
 definePageMeta({
-  name: 'school',
+  name: 'education',
 })
 </script>
 
 <template>
-  <h1>{{ $t('School') }}</h1>
+  <h1>{{ $t('Education') }}</h1>
 </template>
 
 <style scoped>
