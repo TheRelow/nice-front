@@ -53,7 +53,7 @@ function toggleTaskStatus() {
       <div class="task__controls">
         <v-menu>
           <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" icon="mdi-cog" variant="tonal" size="small"></v-btn>
+            <v-btn v-bind="props" icon="mdi-cog" variant="tonal" size="x-small"></v-btn>
           </template>
           <v-list>
             <v-list-item
@@ -65,10 +65,10 @@ function toggleTaskStatus() {
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn @click="startEditing" v-if="!isEditing" icon="mdi-pencil" variant="tonal" size="small"></v-btn>
+        <v-btn @click="startEditing" v-if="!isEditing" icon="mdi-pencil" variant="tonal" size="x-small"></v-btn>
         <template v-else>
-          <v-btn @click="finishEditing" icon="mdi-check" variant="tonal" size="small"></v-btn>
-          <v-btn @click="cancelEditing" icon="mdi-cancel" variant="tonal" size="small"></v-btn>
+          <v-btn @click="finishEditing" icon="mdi-check" variant="tonal" size="x-small"></v-btn>
+          <v-btn @click="cancelEditing" icon="mdi-cancel" variant="tonal" size="x-small"></v-btn>
         </template>
       </div>
     </div>

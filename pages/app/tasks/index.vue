@@ -3,6 +3,7 @@ import { useTaskStore } from "~/store/taskStore";
 import type { Task } from "~/api/task/types";
 
 definePageMeta({
+  name: 'tasks',
   layoutSettings: {
     fileNavigation: 40,
   }

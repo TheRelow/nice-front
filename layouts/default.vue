@@ -3,31 +3,31 @@ import {gsap} from "gsap"
 
 const navRoutes = [
   {
-    to: '/',
+    to: { name: 'app' },
     icon: 'home',
   },
   {
-    to: '/folders',
+    to: { name: 'folders' },
     icon: 'folder',
   },
   {
-    to: '/tasks',
+    to: { name: 'tasks' },
     icon: 'format-list-checkbox',
   },
   {
-    to: '/goals',
+    to: { name: 'goals' },
     icon: 'bullseye-arrow',
   },
   {
-    to: '/school',
+    to: { name: 'school' },
     icon: 'school',
   },
   {
-    to: '/blog',
+    to: { name: 'blogConfig' },
     icon: 'post',
   },
   {
-    to: '/dev',
+    to: { name: 'dev' },
     icon: 'cogs',
   },
 ]

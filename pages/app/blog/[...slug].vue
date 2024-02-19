@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <h1>{{ $t('Goals') }}</h1>
+  <main>
+    <ContentDoc />
+  </main>
 </template>
 
 <style scoped>
