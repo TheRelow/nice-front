@@ -89,7 +89,7 @@ function toggleTaskStatus() {
   margin-top: -1px;
   border-radius: 6px;
   &:hover {
-    background-color: rgba(255,255,255, 0.1);
+    background-color: $light200;
   }
   &:first-child {
   }
@@ -110,7 +110,7 @@ function toggleTaskStatus() {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: $gray400;
+    background-color: $light200;
     content: '';
   }
 }

@@ -1,20 +1,25 @@
 <script setup lang="ts">
-import type {Folder} from "~/api/folder/types";
+// import type {Folder} from "~/api/folder/types";
+
+interface Folder {
+  id: number,
+  title: string,
+}
 
 const props = withDefaults(defineProps<{
   folder?: Folder
 }>(), {
-  folder: {
+  folder: () => ({
+    id: 1,
     title: 'Title',
-    id: 1
-  },
+  }),
 })
 </script>
 
 <template>
   <li class="folders-list__item">
     <BaseIcon color="inherit" icon="folder"></BaseIcon>
-    Work
+    {{ folder.title }}
   </li>
 </template>
 

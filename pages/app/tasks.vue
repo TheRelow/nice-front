@@ -2,12 +2,7 @@
 </script>
 
 <template>
-  <div class="task-section">
-    <div class="task-section__settings">
-      <FoldersList style="margin: 0 -18px;"></FoldersList>
-    </div>
-    <NuxtPage />
-  </div>
+  <NuxtPage />
 </template>
 
 <style scoped lang="scss">

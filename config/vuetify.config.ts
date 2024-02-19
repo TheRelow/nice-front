@@ -2,6 +2,6 @@ import { defineVuetifyConfiguration } from 'vuetify-nuxt-module/custom-configura
 
 export default defineVuetifyConfiguration({
   theme: {
-    defaultTheme: 'dark'
+    // defaultTheme: 'dark'
   }
 })

@@ -2,28 +2,27 @@
 import type {Folder} from "~/api/folder/types";
 
 const props = withDefaults(defineProps<{
-  tasks: Folder[]
+  folders: Folder[]
 }>(), {
-  tasks() {
-    return []
+  folders() {
+    return [
+      { id: 1, title: "Work" },
+      { id: 2, title: "Personal" },
+      { id: 3, title: "Programming" },
+      { id: 4, title: "Documents" },
+      { id: 5, title: "Photos" },
+      { id: 6, title: "Music" },
+      { id: 7, title: "Videos" },
+      { id: 8, title: "Downloads" },
+      { id: 9, title: "Archive" }
+    ]
   },
 })
 </script>
 
 <template>
   <ul class="folders-list">
-    <li class="folders-list__item">
-      <BaseIcon color="inherit" icon="folder"></BaseIcon>
-      Work
-    </li>
-    <li class="folders-list__item">
-      <BaseIcon color="inherit" icon="folder"></BaseIcon>
-      Today
-    </li>
-    <li class="folders-list__item">
-      <BaseIcon color="inherit" icon="folder"></BaseIcon>
-      This week
-    </li>
+    <FoldersListItem v-for="folder of props.folders" :key="folder.id" :folder="folder" />
   </ul>
 </template>
 
@@ -37,7 +36,6 @@ const props = withDefaults(defineProps<{
   align-items: center;
   padding: 4px 18px;
   gap: 12px;
-  color: $gray500;
 
   &:hover {
     background-color: $light200

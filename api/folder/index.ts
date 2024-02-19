@@ -1,17 +1,17 @@
-import type {Task} from "~/api/task/types";
+import type {Folder} from "./types";
 
-export const taskApi = {
-  async findAll(): Promise<Task[]> {
+export const folderApi = {
+  async findAll(): Promise<Folder[]> {
     try {
-      return await $fetch('http://localhost:5000/tasks');
+      return await $fetch('http://localhost:5000/folders');
     } catch (error) {
       console.error('Произошла ошибка:', error);
       throw error;
     }
   },
-  async create(title: string): Promise<Task> {
+  async create(title: string): Promise<Folder> {
     try {
-      return await $fetch('http://localhost:5000/tasks', {
+      return await $fetch('http://localhost:5000/folders', {
         method: 'POST',
         body: {title}
       });
@@ -20,17 +20,17 @@ export const taskApi = {
       throw error;
     }
   },
-  async findOne(id: number): Promise<Task> {
+  async findOne(id: number): Promise<Folder> {
     try {
-      return await $fetch(`http://localhost:5000/tasks/${id}`);
+      return await $fetch(`http://localhost:5000/folders/${id}`);
     } catch (error) {
       console.error('Произошла ошибка:', error);
       throw error;
     }
   },
-  async update(id: number, data: Partial<Task>): Promise<Task> {
+  async update(id: number, data: Partial<Folder>): Promise<Folder> {
     try {
-      return await $fetch(`http://localhost:5000/tasks/${id}`, {
+      return await $fetch(`http://localhost:5000/folders/${id}`, {
         method: 'PATCH',
         body: data
       });
@@ -41,7 +41,7 @@ export const taskApi = {
   },
   async remove(id: number) {
     try {
-      return await $fetch(`http://localhost:5000/tasks/${id}`, {
+      return await $fetch(`http://localhost:5000/folders/${id}`, {
         method: 'delete'
       });
     } catch (error) {

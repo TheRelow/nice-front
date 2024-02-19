@@ -2,11 +2,13 @@
 </script>
 
 <template>
-  <div>
+  <div class="dev-section">
     <NuxtPage></NuxtPage>
   </div>
 </template>
 
 <style scoped>
+.dev-section {
 
+}
 </style>

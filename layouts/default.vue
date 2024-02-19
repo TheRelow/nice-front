@@ -17,7 +17,7 @@ const navRoutes = [
     icon: 'bullseye-arrow',
   },
   {
-    to: { name: 'school' },
+    to: { name: 'education' },
     icon: 'school',
   },
   {
@@ -55,6 +55,12 @@ const navAppSettings = ref()
       </nav>
     </div>
     <div class="section">
+      <div class="section__settings">
+        <div class="folders-controls">
+          <v-btn icon="mdi-folder-plus" variant="tonal" size="x-small"></v-btn>
+        </div>
+        <FoldersList style="margin: 0 -18px;"></FoldersList>
+      </div>
       <slot></slot>
     </div>
   </div>
@@ -70,7 +76,7 @@ const navAppSettings = ref()
   width: 100vw;
   //height: calc(100svh - 24px);
   height: 100svh;
-  background-color: $gray500;
+  background-color: $light50;
 }
 .navigation {
   display: flex;
@@ -135,5 +141,12 @@ const navAppSettings = ref()
   display: flex;
   width: calc(100% - 72px);
   height: 100%;
+}
+
+.section__settings {
+  width: 320px;
+  height: 100%;
+  background-color: $light100;
+  padding: 12px 18px;
 }
 </style>

@@ -50,18 +50,19 @@ const folders = [
 }
 .folders-section__item_first {
   grid-column: 1/3;
+  padding: 24px;
 }
 .folders-grid-list {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 24px;
+  display: flex;
+  gap: 12px;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 .folders-grid-list__item {
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 60px;
+  height: 40px;
   padding: 8px 18px;
   background-color: $light200;
   border-radius: 24px;
