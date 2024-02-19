@@ -46,6 +46,9 @@ const classes = computed((): string => {
 .icon_color_accent {
   color: $accent;
 }
+.icon_color_gray {
+  color: $gray800;
+}
 
 .icon_color_inherit {
   color: currentColor;

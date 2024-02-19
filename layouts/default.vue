@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {gsap} from "gsap"
-
 const navRoutes = [
   {
     to: { name: 'app' },
@@ -31,61 +29,10 @@ const navRoutes = [
     icon: 'cogs',
   },
 ]
-
-const route = useRoute()
-
 const navAppSettings = ref()
-const fileContent = ref()
-const fileNavigation = ref()
-
-const fileNavigationSettings = computed(() => {
-  let result = true
-  if (route.meta?.layoutSettings?.fileNavigation !== undefined) {
-    result = route.meta.layoutSettings.fileNavigation
-  }
-  return result
-})
-
-const fileNavigationStyles = computed(() => {
-  let styles = {
-    width: '240px'
-  }
-  if (fileNavigationSettings.value === false) {
-    styles.width = '0'
-  } else if (typeof fileNavigationSettings.value === 'number') {
-    styles.width = `${fileNavigationSettings.value}%`
-  }
-  return styles
-})
-const fileContentStyles = computed(() => {
-  let styles = {
-    width: 'calc(100% - 240px)'
-  }
-  if (fileNavigationSettings.value === false) {
-    styles.width = '100%'
-  } else if (typeof fileNavigationSettings.value === 'number') {
-    styles.width = `${100 - fileNavigationSettings.value}%`
-  }
-  return styles
-})
-let defaultFileNavigationStyles: object | null = fileNavigationStyles.value
-let defaultFileContentStyles: object | null = fileContentStyles.value
-
-onMounted(() => {
-  defaultFileNavigationStyles = null
-  defaultFileContentStyles = null
-})
-
-watch(fileContentStyles, (val) => {
-  gsap.to(fileContent.value, { duration: 0.1, ...val, ease: 'power1.in' });
-})
-watch(fileNavigationStyles, (val) => {
-  gsap.to(fileNavigation.value, { duration: 0.1, ...val, ease: 'power1.in' });
-})
 </script>
 
 <template>
-  <div class="system-bar"></div>
   <div class="app">
     <div class="navigation">
       <nav>
@@ -108,17 +55,7 @@ watch(fileNavigationStyles, (val) => {
       </nav>
     </div>
     <div class="section">
-      <div class="section__navigation"></div>
-      <div class="section__content file">
-        <div class="file__top-bar"></div>
-        <div class="file__main">
-          <div class="file__content" ref="fileContent" :style="defaultFileContentStyles">
-            <slot></slot>
-          </div>
-          <div class="file__navigation" ref="fileNavigation" :style="defaultFileNavigationStyles">
-          </div>
-        </div>
-      </div>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -131,7 +68,8 @@ watch(fileNavigationStyles, (val) => {
 .app {
   display: flex;
   width: 100vw;
-  height: calc(100svh - 24px);
+  //height: calc(100svh - 24px);
+  height: 100svh;
   background-color: $gray500;
 }
 .navigation {
@@ -140,6 +78,7 @@ watch(fileNavigationStyles, (val) => {
   justify-content: space-between;
   width: 72px;
   height: 100%;
+  padding-top: 8px;
   background-color: $gray800;
 }
 .navigation__item {
@@ -152,6 +91,7 @@ watch(fileNavigationStyles, (val) => {
   margin-bottom: 8px;
 }
 .navigation__link {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +104,7 @@ watch(fileNavigationStyles, (val) => {
   &:before {
     position: absolute;
     top: 50%;
-    left: -4px;
+    left: -15px;
     display: block;
     height: 8px;
     width: 8px;
@@ -183,6 +123,8 @@ watch(fileNavigationStyles, (val) => {
   }
   &.router-link-active {
     background-color: $primary;
+    filter: drop-shadow(0 0 35px $primary);
+
     &:before {
       width: 8px;
       height: 40px;
@@ -193,36 +135,5 @@ watch(fileNavigationStyles, (val) => {
   display: flex;
   width: calc(100% - 72px);
   height: 100%;
-}
-.section__navigation {
-  width: 232px;
-  height: 100%;
-  background-color: $gray600;
-}
-.section__content {
-  width: calc(100% - 232px);
-  height: 100%;
-}
-.file__top-bar {
-  width: 100%;
-  height: 0;
-}
-.file__main {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-.file__content {
-  width: calc(100% - 240px);
-  height: 100%;
-  padding: 24px;
-  overflow: auto;
-  transition: width 0.2s;
-}
-.file__navigation {
-  width: 240px;
-  height: 100%;
-  background-color: $gray600;
-  transition: width 0.2s;
 }
 </style>

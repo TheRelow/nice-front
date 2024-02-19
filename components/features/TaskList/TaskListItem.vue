@@ -51,7 +51,7 @@ function toggleTaskStatus() {
       </template>
       <v-text-field v-else variant="solo" density="compact" single-line hide-details v-model="editingValue"></v-text-field>
       <div class="task__controls">
-        <v-menu>
+        <v-menu location="bottom center">
           <template v-slot:activator="{ props }">
             <v-btn v-bind="props" icon="mdi-cog" variant="tonal" size="x-small"></v-btn>
           </template>

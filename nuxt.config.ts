@@ -56,4 +56,10 @@ export default defineNuxtConfig({
     // Vue configuration file, you can move it to the root folder
     vueI18n: './config/i18n.config.ts'
   },
+  vuetify: {
+    moduleOptions: {
+      /* module specific options */
+    },
+    vuetifyOptions: './config/vuetify.config.ts' // <== you can omit it
+  }
 })

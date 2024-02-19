@@ -15,7 +15,7 @@ function createTask() {
 <template>
   <form @submit.prevent="createTask" class="create-task">
     <v-text-field v-model="taskTitle" variant="solo" density="compact" single-line hide-details placeholder="Task title"></v-text-field>
-    <v-btn @click="createTask" variant="tonal" rounded="lg" size="large">create</v-btn>
+    <v-btn @click="createTask">create</v-btn>
   </form>
 </template>
 

@@ -3,10 +3,7 @@ import { useTaskStore } from "~/store/taskStore";
 import type { Task } from "~/api/task/types";
 
 definePageMeta({
-  name: 'tasks',
-  layoutSettings: {
-    fileNavigation: 40,
-  }
+  name: 'tasks'
 })
 
 const taskStore = useTaskStore()
@@ -21,15 +18,34 @@ const doneTasks = computed((): Task[]=>{
 </script>
 
 <template>
-  <div>
-    <CreateTask></CreateTask>
-    <h1>{{ $t('ToDo') }}</h1>
-    <TaskList :tasks="toDoTasks"></TaskList>
-    <h1>{{ $t('Done') }}</h1>
-    <TaskList :tasks="doneTasks"></TaskList>
+  <div class="task-page">
+    <div class="task-page__item task-page__item_first"></div>
+    <div class="task-page__item"></div>
+    <div class="task-page__item"></div>
+    <div class="task-page__item"></div>
+    <div class="task-page__item task-page__item_last"></div>
   </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+.task-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 24px;
+  width: 100%;
+  padding: 32px;
+  background-color: $light50;
+}
+.task-page__item {
+  background-color: $light100;
+  border-radius: 24px;
+}
+.task-page__item_first {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+.task-page__item_last {
+  grid-column: 2/4;
+  grid-row: 3/4;
+}
 </style>
