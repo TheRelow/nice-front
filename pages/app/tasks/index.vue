@@ -1,22 +1,3 @@
-<script setup lang="ts">
-import { useTaskStore } from "~/store/taskStore";
-import type { Task } from "~/api/task/types";
-
-definePageMeta({
-  name: 'tasks'
-})
-
-const taskStore = useTaskStore()
-await useAsyncData('tasks',  () => taskStore.loadAllTasks())
-
-const toDoTasks = computed((): Task[]=>{
-  return taskStore.taskList?.filter((el: Task) => !el.isDone).reverse()
-})
-const doneTasks = computed((): Task[]=>{
-  return taskStore.taskList?.filter((el: Task) => el.isDone)
-})
-</script>
-
 <template>
   <div class="task-page">
     <div class="task-page__item main-task task-page__item_1">
@@ -46,6 +27,25 @@ const doneTasks = computed((): Task[]=>{
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useTaskStore } from "~/store/taskStore";
+import type { Task } from "~/api/task/types";
+
+definePageMeta({
+  name: 'tasks'
+})
+
+const taskStore = useTaskStore()
+await useAsyncData('tasks',  () => taskStore.loadAllTasks())
+
+const toDoTasks = computed((): Task[]=>{
+  return taskStore.taskList?.filter((el: Task) => !el.isDone).reverse()
+})
+const doneTasks = computed((): Task[]=>{
+  return taskStore.taskList?.filter((el: Task) => el.isDone)
+})
+</script>
 
 <style scoped lang="scss">
 .task-page {

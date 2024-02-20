@@ -21,6 +21,7 @@
     "@nuxt/content": "^2.12.0",
     "@nuxtjs/i18n": "^8.1.1",
     "@pinia/nuxt": "^0.5.1",
+    "oxlint": "^0.2.9",
     "sass": "^1.70.0",
     "vuetify-nuxt-module": "^0.11.0"
   }
