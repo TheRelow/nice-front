@@ -1,11 +1,16 @@
 <template>
-$END$
+  <div>
+    <h1>
+      Folder list
+    </h1>
+    <FoldersList></FoldersList>
+  </div>
 </template>
 
 <script>
-export default {
-name: "folder-list"
-}
+definePageMeta({
+  name: 'component_folder-list'
+})
 </script>
 
 <style scoped>

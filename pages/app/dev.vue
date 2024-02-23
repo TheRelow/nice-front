@@ -7,8 +7,8 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .dev-section {
-
+  padding: 24px;
 }
 </style>

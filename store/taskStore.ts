@@ -5,7 +5,6 @@ import {useCrudApi} from "~/store/generic-crud";
 
 export const useTaskStore = defineStore('task', () => {
   const taskList = ref<Task[]>([])
-
   const crudApi = useCrudApi<Task>(taskList, taskApi)
 
   const loadAllTasks = crudApi.loadAllResources

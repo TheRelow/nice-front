@@ -17,9 +17,27 @@ export function useCrudApi<T extends Resource<any>>(resourceList: Ref<T[]>, api:
     }
   }
 
-  async function createResource(data: Omit<T, 'id'>): Promise<T> {
+  async function loadResource(id: number): Promise<T[]> {
     try {
-      const resource = await api.create(data);
+      const resource = await api.findOne(id);
+      // @ts-ignore
+      const idx = resourceList.value.findIndex((el: T) => el.id === id)
+      if (idx !== -1) {
+        // @ts-ignore
+        resourceList.value[idx] = { ...resourceList.value[idx], ...resource }
+      } else {
+        resourceList.value.push(resource);
+      }
+      return resource;
+    } catch (error) {
+      console.error(`Error while fetching`, error);
+      throw error;
+    }
+  }
+
+  async function createResource(title: string): Promise<T> {
+    try {
+      const resource = await api.create(title);
       resourceList.value.push(resource);
       return resource;
     } catch (error) {
@@ -82,5 +100,5 @@ export function useCrudApi<T extends Resource<any>>(resourceList: Ref<T[]>, api:
     return resource || undefined
   }
 
-  return { resourceList, loadAllResources, createResource, getResource, updateResource, deleteResource }
+  return { resourceList, loadAllResources, loadResource, createResource, getResource, updateResource, deleteResource }
 }

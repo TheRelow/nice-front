@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { useFolderStore } from '~/store/folderStore';
+
+const folderStore = useFolderStore()
+const foldersList = computed(() => folderStore.folderList)
+
 const navRoutes = [
   {
     to: { name: 'app' },
@@ -30,6 +35,8 @@ const navRoutes = [
   },
 ]
 const navAppSettings = ref()
+
+folderStore.loadAllFolders()
 </script>
 
 <template>
@@ -56,10 +63,10 @@ const navAppSettings = ref()
     </div>
     <div class="section">
       <div class="section__settings">
-        <div class="folders-controls">
+        <!-- <div class="folders-controls">
           <v-btn icon="mdi-folder-plus" variant="tonal" size="x-small"></v-btn>
-        </div>
-        <FoldersList style="margin: 0 -18px;"></FoldersList>
+        </div> -->
+        <FoldersList style="margin: 0 -18px;" :list="foldersList"></FoldersList>
       </div>
       <slot></slot>
     </div>
