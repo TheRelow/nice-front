@@ -1,12 +1,8 @@
 <script setup lang="ts">
-interface Folder {
-  id: number,
-  title: string,
-  list?: Folder[],
-}
+import type { Folder } from "./types"
 
 const props = defineProps<{
-  folder: Folder
+  folder: Folder,
 }>()
 
 const emit = defineEmits(['change'])
@@ -24,17 +20,22 @@ const change = (e:any) => {
       <BaseIcon color="inherit" :icon="isOpened ? 'folder-open' : 'folder'"></BaseIcon>
       {{ folder.title }}
     </div>
-    <FoldersList v-if="isOpened" :list="folder.list" :is-root="false" @change="change" />
+    <FoldersList :list="folder.list" :is-root="false" :folderId="folder.id" @change="change" />
   </li>
 </template>
 
 <style scoped lang="scss">
+.folders-list__item.sortable-drag {
+  opacity: 0.2;
+}
 .folders-list__item-content {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 4px 18px;
   gap: 12px;
   cursor: default;
+  // z-index: 1;
 
   &:hover {
     background-color: $light200

@@ -1,42 +1,48 @@
 <script setup lang="ts">
-import { useFolderStore } from '~/store/folderStore';
+import _ from "lodash";
+import { useFolderStore } from "~/store/folderStore";
+import type { changeEvent } from "@/components/features/FoldersList/types";
 
-const folderStore = useFolderStore()
-const foldersList = computed(() => folderStore.folderList)
+const folderStore = useFolderStore();
+const folderListWithNesting = computed(() => folderStore.folderListWithNesting);
+
+function folderChangehandler(e: changeEvent) {
+  folderStore.updateFolder(e.el, { parentId: e.to });
+}
 
 const navRoutes = [
   {
-    to: { name: 'app' },
-    icon: 'home',
+    to: { name: "app" },
+    icon: "home",
   },
   {
-    to: { name: 'folders' },
-    icon: 'folder',
+    to: { name: "folders" },
+    icon: "folder",
   },
   {
-    to: { name: 'tasks' },
-    icon: 'format-list-checkbox',
+    to: { name: "tasks" },
+    icon: "format-list-checkbox",
   },
   {
-    to: { name: 'goals' },
-    icon: 'bullseye-arrow',
+    to: { name: "goals" },
+    icon: "bullseye-arrow",
   },
   {
-    to: { name: 'education' },
-    icon: 'school',
+    to: { name: "education" },
+    icon: "school",
   },
   {
-    to: { name: 'blogConfig' },
-    icon: 'post',
+    to: { name: "blogConfig" },
+    icon: "post",
   },
   {
-    to: { name: 'dev' },
-    icon: 'cogs',
+    to: { name: "dev" },
+    icon: "cogs",
   },
-]
-const navAppSettings = ref()
+];
+const navAppSettings = ref();
 
-folderStore.loadAllFolders()
+folderStore.loadAllFolders();
 </script>
 
 <template>
@@ -66,7 +72,11 @@ folderStore.loadAllFolders()
         <!-- <div class="folders-controls">
           <v-btn icon="mdi-folder-plus" variant="tonal" size="x-small"></v-btn>
         </div> -->
-        <FoldersList style="margin: 0 -18px;" :list="foldersList"></FoldersList>
+        <FoldersList
+          style="margin: 0 -18px"
+          :list="folderListWithNesting"
+          @change="folderChangehandler"
+        ></FoldersList>
       </div>
       <slot></slot>
     </div>
@@ -125,7 +135,7 @@ folderStore.loadAllFolders()
     border-radius: 0 4px 4px 0;
     transform: translateY(-50%);
     transition: 0.2s;
-    content: '';
+    content: "";
   }
   &:hover {
     border-radius: 12px;
