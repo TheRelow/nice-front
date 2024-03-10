@@ -7,10 +7,8 @@ const inputValue = ref('')
 </script>
 
 <template>
-  <div>
-    <h1>BaseInput</h1>
-    <BaseInput v-model="inputValue"></BaseInput>
-  </div>
+  <h1>BaseInput</h1>
+  <BaseInput v-model="inputValue"></BaseInput>
 </template>
 
 <style scoped>

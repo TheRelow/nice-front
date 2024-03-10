@@ -32,14 +32,12 @@ const links = [
 </script>
 
 <template>
-  <div>
-    <h1>From components</h1>
-    <BaseButtonsList>
-      <BaseButton v-for="item of links" tag="nuxt-link" :to="item.to">
-        {{ item.title }}
-      </BaseButton>
-    </BaseButtonsList>
-  </div>
+  <h1>From components</h1>
+  <BaseButtonsList>
+    <BaseButton v-for="item of links" tag="nuxt-link" :to="item.to">
+      {{ item.title }}
+    </BaseButton>
+  </BaseButtonsList>
 </template>
 
 <style scoped>

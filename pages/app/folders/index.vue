@@ -32,7 +32,6 @@ const folderList = computed(() => store.folder.folderList)
   width: 100%;
   height: 100%;
   background-color: $light50;
-  padding: 32px;
 }
 .folders-section__item {
   background-color: $light100;

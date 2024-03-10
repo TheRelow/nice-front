@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <h1>
-      Folder list
-    </h1>
-    <FoldersList></FoldersList>
-  </div>
+  <h1>
+    Folder list
+  </h1>
+  <FoldersList />
 </template>
 
 <script>

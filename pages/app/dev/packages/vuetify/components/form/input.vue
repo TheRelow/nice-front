@@ -5,10 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <h1>Input</h1>
-    <v-text-field label="Label"></v-text-field>
-  </div>
+  <h1>Input</h1>
+  <v-text-field label="Label"></v-text-field>
 </template>
 
 <style scoped>

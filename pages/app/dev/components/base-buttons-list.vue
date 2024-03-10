@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <h1>BaseButtonsList</h1>
-    <BaseButtonsList>
-      <BaseButton>qweqweqwe</BaseButton>
-      <BaseButton>qweqweqwe</BaseButton>
-    </BaseButtonsList>
-  </div>
+  <h1>BaseButtonsList</h1>
+  <BaseButtonsList>
+    <BaseButton>qweqweqwe</BaseButton>
+    <BaseButton>qweqweqwe</BaseButton>
+  </BaseButtonsList>
 </template>
 
 <script lang="ts" setup>

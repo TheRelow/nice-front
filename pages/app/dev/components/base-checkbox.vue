@@ -7,10 +7,8 @@ const check = ref(false)
 </script>
 
 <template>
-  <div>
-    <h1>BaseCheckbox</h1>
-    <BaseCheckbox v-model="check"></BaseCheckbox>
-  </div>
+  <h1>BaseCheckbox</h1>
+  <BaseCheckbox v-model="check"></BaseCheckbox>
 </template>
 
 <style scoped>

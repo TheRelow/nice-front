@@ -5,10 +5,8 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <h1>Checkbox</h1>
-    <v-checkbox label="Checkbox"></v-checkbox>
-  </div>
+  <h1>Checkbox</h1>
+  <v-checkbox label="Checkbox"></v-checkbox>
 </template>
 
 <style scoped>

@@ -5,12 +5,10 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <h1>Button</h1>
-    <v-btn>
-      Button
-    </v-btn>
-  </div>
+  <h1>Button</h1>
+  <v-btn>
+    Button
+  </v-btn>
 </template>
 
 <style scoped>

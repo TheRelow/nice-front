@@ -2,7 +2,9 @@
 import _ from "lodash";
 import type { changeEvent } from "@/components/features/FoldersList/types";
 
-const folderListWithNesting = computed(() => store.folder.folderListWithNesting);
+const folderListWithNesting = computed(
+  () => store.folder.folderListWithNesting
+);
 
 function folderChangehandler(e: changeEvent) {
   store.folder.updateFolder(e.el, { parentId: e.to });
@@ -40,6 +42,22 @@ const navRoutes = [
 ];
 const navAppSettings = ref();
 
+const sidebarWidth = ref(320);
+function resizerMousedownHandler() {
+  document.body.classList.add("block-user-select");
+  window.addEventListener("mousemove", resize);
+  window.addEventListener("mouseup", stopResize);
+}
+function resize(e: any) {
+  sidebarWidth.value = e.clientX - 72;
+  // const rect = sidebar.getBoundingClientRect();
+  // reactive.left
+}
+function stopResize() {
+  document.body.classList.remove("block-user-select");
+  window.removeEventListener("mousemove", resize);
+}
+
 store.folder.loadAllFolders();
 </script>
 
@@ -66,26 +84,24 @@ store.folder.loadAllFolders();
       </nav>
     </div>
     <div class="section">
-      <div class="section__settings">
-        <!-- <div class="folders-controls">
-          <v-btn icon="mdi-folder-plus" variant="tonal" size="x-small"></v-btn>
-        </div> -->
-        <!-- <FoldersList
-          style="margin: 0 -18px"
-          :list="folderListWithNesting"
-        ></FoldersList> -->
-        <FoldersList
-          style="margin: 0 -18px"
-          :list="folderListWithNesting"
-          :rootId="null"
-        ></FoldersList>
+      <div class="section__settings" :style="`width: ${sidebarWidth}px`">
+        <FoldersList style="margin: 0 -18px" />
+        <div
+          class="section__resizer"
+          @mousedown="resizerMousedownHandler"
+        ></div>
       </div>
-      <slot></slot>
+      <div
+        class="section__content"
+        :style="`width: calc(100% - ${sidebarWidth}px)`"
+      >
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .system-bar {
   height: 24px;
   background-color: $gray800;
@@ -141,6 +157,7 @@ store.folder.loadAllFolders();
   }
   &:hover {
     border-radius: 12px;
+    color: $light;
     &:before {
       width: 8px;
       height: 20px;
@@ -156,16 +173,48 @@ store.folder.loadAllFolders();
     }
   }
 }
+
 .section {
   display: flex;
   width: calc(100% - 72px);
   height: 100%;
 }
-
 .section__settings {
+  position: relative;
   width: 320px;
   height: 100%;
   background-color: $light100;
   padding: 12px 18px;
+}
+.section__content {
+  width: calc(100% - 320px);
+  height: 100%;
+  padding: 24px;
+  > *:first-child {
+    margin-top: 0;
+  }
+}
+.section__resizer {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  width: 10px;
+  cursor: ew-resize;
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    width: 1px;
+    background-color: transparent;
+    transition: 0.15s;
+    content: "";
+  }
+  &:hover {
+    &:after {
+      background-color: $gray500;
+    }
+  }
 }
 </style>

@@ -52,7 +52,7 @@ const doneTasks = computed((): Task[]=>{
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 24px;
   width: 100%;
-  padding: 32px;
+  height: 100%;
   background-color: $light50;
 }
 .task-page__item {

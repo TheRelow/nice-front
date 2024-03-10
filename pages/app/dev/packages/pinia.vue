@@ -5,9 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <h1>@nuxt/pinia</h1>
-  </div>
+  <h1>@nuxt/pinia</h1>
 </template>
 
 <style scoped>

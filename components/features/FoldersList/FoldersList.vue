@@ -9,7 +9,7 @@ const props = withDefaults(
   }>(),
   {
     list() {
-      return [];
+      return store.folder.folderListWithNesting;
     },
     isRoot: true,
   }

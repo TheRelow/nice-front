@@ -38,3 +38,10 @@ a:hover {
   width: 1280px;
   margin: 0 auto;
 }
+
+.block-user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

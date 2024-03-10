@@ -2,13 +2,5 @@
 </script>
 
 <template>
-  <div class="dev-section">
-    <NuxtPage></NuxtPage>
-  </div>
+  <NuxtPage></NuxtPage>
 </template>
-
-<style scoped lang="scss">
-.dev-section {
-  padding: 24px;
-}
-</style>

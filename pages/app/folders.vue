@@ -10,6 +10,6 @@
 <style scoped lang="scss">
 .folder-section {
   width: 100%;
-  padding-left: 24px;
+  height: 100%;
 }
 </style>

@@ -5,13 +5,11 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
-    <h1>Select</h1>
-    <v-select
-        label="Select"
-        :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-    ></v-select>
-  </div>
+  <h1>Select</h1>
+  <v-select
+      label="Select"
+      :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+  ></v-select>
 </template>
 
 <style scoped>
