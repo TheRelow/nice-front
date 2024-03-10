@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import {useTaskStore} from "~/store/taskStore";
-
-const taskStore = useTaskStore()
-
 const taskTitle = ref('')
 
 function createTask() {
   if (!taskTitle.value) return
-  taskStore.createTask(taskTitle.value)
+  store.task.createTask(taskTitle.value)
   taskTitle.value = ''
 }
 </script>

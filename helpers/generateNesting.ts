@@ -55,10 +55,7 @@ export default function generateNesting(
         }
       }
     }
-  }
-
-  console.log('nestingLevels', nestingLevels);
-  
+  }  
 
   return nestingLevels[0];
 }

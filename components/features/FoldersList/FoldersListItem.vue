@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import {
-  isDrag,
-  dragElement,
-  startDrag,
-  finishDrag,
-  setDropTarget,
-} from "@/composables/drag-and-drop";
 import type { Folder } from "./types";
 
 const props = defineProps<{
@@ -15,22 +8,32 @@ const props = defineProps<{
 const emit = defineEmits(["change"]);
 
 const isOpened = ref(false);
-
 const dragTarget = ref(false);
 
+const isEmpty = computed(() => {
+  return props.folder.id !== null && props.folder.list.length === 0;
+});
+
+function collapseToggle(e: any) {
+  if (e) {
+    e.stopPropagation();
+  }
+  isOpened.value = !isOpened.value;
+}
+
 const isDropPlace = computed(() => {
-  let result = (
-    isDrag.value &&
-    dragElement.value?.id !== props.folder.id &&
-    dragElement.value.parentId !== props.folder.id &&
-    !dragElement.value.nestedElementIds.includes(props.folder.id)
-  )
-  return result;
+  if (!isDrag.value) return false;
+  if (dragElement.value.type === "task") return true;
+  if (dragElement.value?.el.id === props.folder.id) return false;
+  if (dragElement.value.el.parentId === props.folder.id) return false;
+  if (dragElement.value.el.nestedElementIds.includes(props.folder.id))
+    return false;
+  return true;
 });
 
 function dragStart(event: any) {
   event.stopPropagation();
-  startDrag(props.folder);
+  startDrag(props.folder, "folder");
 
   const clone = event.target.cloneNode(true);
   clone.classList.add("dragging");
@@ -51,7 +54,7 @@ function dragleave(event: any) {
 }
 function drop(event: any) {
   event.preventDefault();
-  setDropTarget(props.folder);
+  setDropTarget(props.folder, "folder");
   dragTarget.value = false;
 }
 </script>
@@ -60,15 +63,29 @@ function drop(event: any) {
   <li class="folders-list__item">
     <div
       class="folders-list__item-content"
-      :class="{ 'folders-list__item-content_drag-target': dragTarget }"
+      :class="{
+        'folders-list__item-content_drag-target': dragTarget,
+        'opened':
+          store.folder.activeFolder === props.folder.id,
+      }"
       @dragstart="dragStart"
       @dragend="dragEnd"
-      draggable="true"
-      @click="isOpened = !isOpened"
+      :draggable="props.folder.id ? true : false"
+      @click="store.folder.goToFolder(props.folder.id)"
     >
       <BaseIcon
+        class="folders-list__item-collapse"
+        :class="{
+          active: isOpened,
+          hidden: isEmpty,
+        }"
         color="inherit"
-        :icon="isOpened ? 'folder-open' : 'folder'"
+        icon="menu-down"
+        @click="collapseToggle"
+      ></BaseIcon>
+      <BaseIcon
+        color="inherit"
+        :icon="isOpened && !isEmpty ? 'folder-open' : 'folder'"
       ></BaseIcon>
       {{ folder.title }}
     </div>
@@ -116,6 +133,24 @@ function drop(event: any) {
   }
   &_drag-target {
     border: 1px solid #000;
+  }
+  &.opened {
+    background-color: $light300;
+  }
+}
+.folders-list__item-collapse {
+  margin: 0 -6px 0 -10px;
+  transition: 0.15s;
+  border-radius: 50%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  &.active {
+    transform: rotate(-90deg);
+  }
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 </style>

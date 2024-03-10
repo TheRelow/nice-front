@@ -29,21 +29,19 @@
 </template>
 
 <script setup lang="ts">
-import { useTaskStore } from "~/store/taskStore";
 import type { Task } from "~/api/task/types";
 
 definePageMeta({
   name: 'tasks'
 })
 
-const taskStore = useTaskStore()
-await useAsyncData('tasks',  () => taskStore.loadAllTasks())
+await useAsyncData('tasks',  () => store.task.loadAllTasks())
 
 const toDoTasks = computed((): Task[]=>{
-  return taskStore.taskList?.filter((el: Task) => !el.isDone).reverse()
+  return store.task.taskList?.filter((el: Task) => !el.isDone).reverse()
 })
 const doneTasks = computed((): Task[]=>{
-  return taskStore.taskList?.filter((el: Task) => el.isDone)
+  return store.task.taskList?.filter((el: Task) => el.isDone)
 })
 </script>
 

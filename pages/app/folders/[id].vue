@@ -6,19 +6,16 @@
 </template>
 
 <script setup lang="ts">
-import { useFolderStore } from '~/store/folderStore';
-
 definePageMeta({
   name: 'folder'
 })
 
-const folderStore = useFolderStore()
 const route = useRoute()
 
 const folderId = ref<number>()
 const folder = computed(() => {
   if (folderId.value) {
-    return folderStore.getFolder(folderId.value)
+    return store.folder.getFolder(folderId.value)
   } else {
     return {
       title: '[erorr]: No folder'
@@ -27,5 +24,5 @@ const folder = computed(() => {
 })
 
 folderId.value = +route.params.id
-folderStore.loadFolder(folderId.value)
+store.folder.loadFolder(folderId.value)
 </script>

@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { useFolderStore } from '~/store/folderStore';
-
 definePageMeta({
   name: 'folders'
 })
 
-const foldersStore = useFolderStore()
-const folderList = computed(() => foldersStore.folderList)
+const folderList = computed(() => store.folder.folderList)
 </script>
 
 <template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import _ from "lodash";
-import { isDrag, startDrag, finishDrag } from "@/composables/drag-and-drop";
 import type { Folder, RootFolder } from "~/api/folder/types";
 const emit = defineEmits(["change"]);
 const props = withDefaults(

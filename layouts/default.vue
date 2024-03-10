@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import _ from "lodash";
-import { useFolderStore } from "~/store/folderStore";
 import type { changeEvent } from "@/components/features/FoldersList/types";
 
-const folderStore = useFolderStore();
-const folderListWithNesting = computed(() => folderStore.folderListWithNesting);
+const folderListWithNesting = computed(() => store.folder.folderListWithNesting);
 
 function folderChangehandler(e: changeEvent) {
-  folderStore.updateFolder(e.el, { parentId: e.to });
+  store.folder.updateFolder(e.el, { parentId: e.to });
 }
 
 const navRoutes = [
@@ -42,7 +40,7 @@ const navRoutes = [
 ];
 const navAppSettings = ref();
 
-folderStore.loadAllFolders();
+store.folder.loadAllFolders();
 </script>
 
 <template>

@@ -6,6 +6,7 @@ export interface changeEvent {
 export interface Folder {
   id: number,
   title: string,
-  list?: Folder[],
+  list: Folder[],
+  nestedElementIds?: number[],
   parentId: number | null,
 }
