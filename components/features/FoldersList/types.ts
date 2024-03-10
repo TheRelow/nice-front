@@ -7,4 +7,5 @@ export interface Folder {
   id: number,
   title: string,
   list?: Folder[],
+  parentId: number | null,
 }

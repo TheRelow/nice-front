@@ -72,10 +72,14 @@ folderStore.loadAllFolders();
         <!-- <div class="folders-controls">
           <v-btn icon="mdi-folder-plus" variant="tonal" size="x-small"></v-btn>
         </div> -->
+        <!-- <FoldersList
+          style="margin: 0 -18px"
+          :list="folderListWithNesting"
+        ></FoldersList> -->
         <FoldersList
           style="margin: 0 -18px"
           :list="folderListWithNesting"
-          @change="folderChangehandler"
+          :rootId="null"
         ></FoldersList>
       </div>
       <slot></slot>

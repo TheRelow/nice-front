@@ -6,12 +6,17 @@ import generateNesting from '@/helpers/generateNesting';
 
 export const useFolderStore = defineStore('fileSystem', () => {
   const folderList = ref<Folder[]>([])
+  const activeFolder = ref<number | null>(null)
+
   const folderListWithNesting = computed(() => {
     return generateNesting(folderList.value)
   })
 
+  const goToFolder = (id: number | null) => {
+    activeFolder.value = id
+  }
+
   const crudApi = useCrudApi<Folder>(folderList, folderApi)
-  
   const loadAllFolders = crudApi.loadAllResources
   const loadFolder = crudApi.loadResource
   const createFolder = crudApi.createResource
@@ -19,5 +24,5 @@ export const useFolderStore = defineStore('fileSystem', () => {
   const deleteFolder = crudApi.deleteResource
   const getFolder = crudApi.getResource
 
-  return {folderList, folderListWithNesting, loadAllFolders, loadFolder, createFolder, getFolder, updateFolder, deleteFolder}
+  return {folderList, activeFolder, folderListWithNesting, loadAllFolders, loadFolder, createFolder, getFolder, updateFolder, deleteFolder, goToFolder}
 })
