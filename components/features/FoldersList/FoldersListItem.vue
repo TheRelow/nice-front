@@ -65,8 +65,7 @@ function drop(event: any) {
       class="folders-list__item-content"
       :class="{
         'folders-list__item-content_drag-target': dragTarget,
-        'opened':
-          store.folder.activeFolder === props.folder.id,
+        opened: store.folder.activeFolder === props.folder.id,
       }"
       @dragstart="dragStart"
       @dragend="dragEnd"
@@ -74,7 +73,7 @@ function drop(event: any) {
       @click="store.folder.goToFolder(props.folder.id)"
     >
       <BaseIcon
-        class="folders-list__item-collapse"
+        class="folders-list__item-control folders-list__item-collapse"
         :class="{
           active: isOpened,
           hidden: isEmpty,
@@ -84,10 +83,18 @@ function drop(event: any) {
         @click="collapseToggle"
       ></BaseIcon>
       <BaseIcon
+        class="folders-list__item-folder"
         color="inherit"
         :icon="isOpened && !isEmpty ? 'folder-open' : 'folder'"
       ></BaseIcon>
-      {{ folder.title }}
+      <div class="folders-list__item-content-title">
+        {{ folder.title }}
+      </div>
+      <BaseIcon
+        class="folders-list__item-settings folders-list__item-control"
+        color="inherit"
+        icon="dots-horizontal"
+      ></BaseIcon>
     </div>
     <div
       class="folders-list__item-drag-handler"
@@ -118,10 +125,10 @@ function drop(event: any) {
   display: flex;
   align-items: center;
   padding: 4px 18px;
-  gap: 12px;
   border-radius: 4px;
   border: 1px solid transparent;
-  cursor: default;
+  overflow: hidden;
+  cursor: pointer;
   &.dragging {
     width: auto;
     opacity: 0.35;
@@ -138,19 +145,48 @@ function drop(event: any) {
     background-color: $light300;
   }
 }
-.folders-list__item-collapse {
-  margin: 0 -6px 0 -10px;
+.folders-list__item-control {
+  flex: none;
   transition: 0.15s;
   border-radius: 50%;
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
+}
+.folders-list__item-collapse {
+  margin: 0 2px 0 -10px;
   &.active {
     transform: rotate(-90deg);
   }
   &.hidden {
     opacity: 0;
     pointer-events: none;
+  }
+}
+.folders-list__item-folder {
+  margin-right: 6px;
+}
+.folders-list__item-content-controls {
+  display: none;
+}
+.folders-list__item-content-folder-structure {
+  width: 50px;
+}
+.folders-list__item-content-title {
+  position: relative;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 1;
+}
+.folders-list__item-settings {
+  display: none;
+}
+.folders-list__item-content:hover {
+  .folders-list__item-settings {
+    display: block;
   }
 }
 </style>

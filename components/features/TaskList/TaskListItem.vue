@@ -141,6 +141,9 @@ function dragEnd(e: any) {
   justify-content: space-between;
   align-items: center;
   flex-grow: 1;
+  white-space: pre;
+  word-break: keep-all;
+  overflow: hidden;
   cursor: default;
   &:after {
     position: absolute;

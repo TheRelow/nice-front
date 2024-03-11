@@ -93,7 +93,6 @@ store.folder.loadAllFolders();
       </div>
       <div
         class="section__content"
-        :style="`width: calc(100% - ${sidebarWidth}px)`"
       >
         <slot></slot>
       </div>
@@ -180,14 +179,16 @@ store.folder.loadAllFolders();
   height: 100%;
 }
 .section__settings {
+  flex: none;
   position: relative;
-  width: 320px;
+  min-width: 320px;
   height: 100%;
   background-color: $light100;
   padding: 12px 18px;
 }
 .section__content {
-  width: calc(100% - 320px);
+  flex: 1 1 auto;
+  max-width: calc(100% - 320px);
   height: 100%;
   padding: 24px;
   > *:first-child {
