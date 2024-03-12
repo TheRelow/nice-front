@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { Folder } from "./types";
 
+const folderActions = [{ title: "Add new folder", action: () => {} }];
+
 const props = defineProps<{
   folder: Folder;
 }>();
@@ -98,7 +100,7 @@ function drop(event: any) {
     </div>
     <div
       class="folders-list__item-drag-handler"
-      v-if="isDropPlace"
+      :class="{active: isDropPlace}"
       ondragover="event.preventDefault()"
       @drop="drop"
       @dragenter="dragenter"
@@ -118,7 +120,12 @@ function drop(event: any) {
   right: 0;
   bottom: 0;
   left: 0;
+  display: none;
+  z-index: 1;
   content: "";
+  &.active {
+    display: block;
+  }
 }
 .folders-list__item-content {
   position: relative;
@@ -183,6 +190,9 @@ function drop(event: any) {
 }
 .folders-list__item-settings {
   display: none;
+  &.active {
+    display: block;
+  }
 }
 .folders-list__item-content:hover {
   .folders-list__item-settings {

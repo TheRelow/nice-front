@@ -25,18 +25,21 @@
 <script setup lang="ts">
 import type { Task } from "~/api/task/types";
 
+import { useTaskStore } from "~/store/taskStore";
+const taskStore = useTaskStore()
+
 definePageMeta({
   name: "tasks",
 });
 
-await useAsyncData("tasks", () => store.task.loadAllTasks());
-
 const toDoTasks = computed((): Task[] => {
   return store.task.taskList
-    ?.filter((el: Task) => !el.isDone)
+    ?.filter((el: Task) => !el.isDone && el.parentFolderId === store.folder.activeFolder)
     .reverse()
-    .filter((el: any) => el.parentFolderId === store.folder.activeFolder);
 });
+
+// TODO: понять почему не работает с composable
+await useAsyncData("tasks", () => taskStore.loadAllTasks());
 </script>
 
 <style scoped lang="scss">

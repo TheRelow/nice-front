@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import _ from "lodash";
 import type { changeEvent } from "@/components/features/FoldersList/types";
+import { useFolderStore } from "~/store/folderStore";
+
+const folderStore = useFolderStore()
 
 const folderListWithNesting = computed(
   () => store.folder.folderListWithNesting
@@ -58,7 +61,8 @@ function stopResize() {
   window.removeEventListener("mousemove", resize);
 }
 
-store.folder.loadAllFolders();
+// TODO: понять почему не работает с composable
+await useAsyncData("tasks", () => folderStore.loadAllFolders());
 </script>
 
 <template>

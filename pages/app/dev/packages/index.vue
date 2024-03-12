@@ -9,5 +9,5 @@
 definePageMeta({
   name: 'packages'
 })
-const baseComponents = ['vuetify', 'i18n', 'gsap', 'pinia', 'content', 'mdi']
+const baseComponents = ['i18n', 'gsap', 'pinia', 'content', 'mdi']
 </script>

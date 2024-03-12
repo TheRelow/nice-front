@@ -59,56 +59,13 @@ function dragEnd(e: any) {
       <template v-if="!isEditing">
         {{ task.title }}
       </template>
-      <v-text-field
-        v-else
-        variant="solo"
-        density="compact"
-        single-line
-        hide-details
-        v-model="editingValue"
-      ></v-text-field>
+      <base-input v-else v-model="editingValue" />
       <div class="task__controls">
-        <v-menu location="bottom center">
-          <template v-slot:activator="{ props }">
-            <v-btn
-              v-bind="props"
-              icon="mdi-cog"
-              variant="tonal"
-              size="x-small"
-            ></v-btn>
-          </template>
-          <v-list>
-            <v-list-item
-              v-for="(item, index) in items"
-              :key="index"
-              :value="index"
-            >
-              <v-list-item-title @click="item.action">{{
-                item.title
-              }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-        <v-btn
-          @click="startEditing"
-          v-if="!isEditing"
-          icon="mdi-pencil"
-          variant="tonal"
-          size="x-small"
-        ></v-btn>
+        <BaseIcon icon="cog" />
+        <BaseIcon @click="startEditing" v-if="!isEditing" icon="pencil" />
         <template v-else>
-          <v-btn
-            @click="finishEditing"
-            icon="mdi-check"
-            variant="tonal"
-            size="x-small"
-          ></v-btn>
-          <v-btn
-            @click="cancelEditing"
-            icon="mdi-cancel"
-            variant="tonal"
-            size="x-small"
-          ></v-btn>
+          <BaseIcon @click="finishEditing" icon="check" />
+          <BaseIcon @click="cancelEditing" icon="cancel" />
         </template>
       </div>
     </div>

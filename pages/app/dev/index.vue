@@ -10,7 +10,6 @@ definePageMeta({
     <BaseButton tag="nuxt-link" :to="{name: 'components'}">{{ $t('Components') }}</BaseButton>
     <BaseButton tag="nuxt-link" :to="{name: 'packages'}">{{ $t('Packages') }}</BaseButton>
   </BaseButtonsList>
-  <v-switch label="Switch"></v-switch>
 </template>
 
 <style scoped>

@@ -1,21 +1,23 @@
 import { useFolderStore } from "~/store/folderStore";
 import { useTaskStore } from "~/store/taskStore";
 
-let taskStoreInstance: any = null;
-let folderStoreInstance: any = null;
+let storeInstance: any = {
+  task: null,
+  folder: null,
+}
 
-export const store: any = new Proxy({}, {
+export const store: any = new Proxy(storeInstance, {
     get: function(target, property) {
         if (property === 'task') {
-            if (taskStoreInstance === null) {
-                taskStoreInstance = useTaskStore();
+            if (storeInstance.task === null) {
+                storeInstance.task = useTaskStore();
             }
-            return taskStoreInstance;
+            return storeInstance.task;
         } else if (property === 'folder') {
-            if (folderStoreInstance === null) {
-                folderStoreInstance = useFolderStore();
+            if (storeInstance.folder === null) {
+                storeInstance.folder = useFolderStore();
             }
-            return folderStoreInstance;
+            return storeInstance.folder;
         }
     }
 });
