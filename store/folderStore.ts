@@ -6,7 +6,7 @@ import generateNesting from '@/helpers/generateNesting';
 
 export const useFolderStore = defineStore('fileSystem', () => {
   const folderList = ref<Folder[]>([])
-  const activeFolder = ref<number | null>(null)
+  const activeFolder = ref<number | null>()
 
   const folderListWithNesting = computed(() => {
     return generateNesting(folderList.value)

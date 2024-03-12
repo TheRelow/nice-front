@@ -34,7 +34,7 @@ definePageMeta({
 
 const toDoTasks = computed((): Task[] => {
   return store.task.taskList
-    ?.filter((el: Task) => !el.isDone && el.parentFolderId === store.folder.activeFolder)
+    ?.filter((el: Task) => !el.isDone && (store.folder.activeFolder === undefined || el.parentFolderId === store.folder.activeFolder))
     .reverse()
 });
 

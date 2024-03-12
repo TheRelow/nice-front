@@ -6,6 +6,7 @@ let storeInstance: any = {
   folder: null,
 }
 
+
 export const store: any = new Proxy(storeInstance, {
     get: function(target, property) {
         if (property === 'task') {
