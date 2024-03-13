@@ -31,6 +31,7 @@ const isCreateFolderOpened = computed<boolean>({
 });
 const createFolderTitle = ref('')
 function createFolder() {
+  store.folder.
   console.log(`create folder [${createFolderTitle.value}] in ${createFolderId.value}`);
   createFolderId.value = false
   createFolderTitle.value = ''

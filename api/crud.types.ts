@@ -10,11 +10,11 @@ export class CrudApi<T> {
       }
     }
   
-    async create(title: string): Promise<T> {
+    async create<T extends BodyInit | Record<string, any> | null | undefined>(data: T): Promise<T> {
       try {
         return await $fetch(this.baseUrl, {
           method: 'POST',
-          body: {title},
+          body: data,
         });
       } catch (error) {
         console.error('Произошла ошибка:', error);

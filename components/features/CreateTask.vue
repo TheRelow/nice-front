@@ -3,7 +3,7 @@ const taskTitle = ref('')
 
 function createTask() {
   if (!taskTitle.value) return
-  store.task.createTask(taskTitle.value)
+  store.task.createTask({title: taskTitle.value})
   taskTitle.value = ''
 }
 </script>
