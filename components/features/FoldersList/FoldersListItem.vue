@@ -141,7 +141,7 @@ function drop(event: any) {
     ></div>
     <FoldersList :list="folder.list" :isRoot="false" v-if="isOpened" />
     <base-popup class="create-folder-popup" v-model="isCreateFolderOpened">
-      <base-input v-model="createFolderTitle" />
+      <base-input v-model="createFolderTitle" noOffset focus />
       <base-button @click="createFolder">create</base-button>
     </base-popup>
   </li>

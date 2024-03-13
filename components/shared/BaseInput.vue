@@ -1,19 +1,19 @@
 <template>
-  <input type="text" v-model="inputValue" :class="classes" ref="input">
+  <input type="text" v-model="inputValue" :class="classes" ref="input" />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import { defineComponent } from "vue";
 export default defineComponent({
   name: "BaseInput",
-  data: ()=>({
+  data: () => ({
     isFocus: false,
-    inputValue: '',
+    inputValue: "",
   }),
-  emits: ['update:focus', 'update:modelValue'],
+  emits: ["update:focus", "update:modelValue"],
   props: {
     modelValue: {
-      type: String
+      type: String,
     },
     focus: {
       type: Boolean,
@@ -25,54 +25,60 @@ export default defineComponent({
   },
   computed: {
     classes(): string[] {
-      let classList = [this.$style.input]
+      let classList = [this.$style.input];
 
       if (this.$attrs.class) {
-        classList.push(this.$attrs.class)
+        classList.push(this.$attrs.class);
       }
       if (this.rounding) {
-        classList.push(this.$style[`input_rounding_${this.rounding}`])
+        classList.push(this.$style[`input_rounding_${this.rounding}`]);
       }
       if (this.fullWidth) {
-        classList.push(this.$style[`input_full-width`])
+        classList.push(this.$style[`input_full-width`]);
       }
       if (this.noOffset) {
-        classList.push(this.$style[`input_no-offset`])
+        classList.push(this.$style[`input_no-offset`]);
       }
 
-      return classList
+      return classList;
+    },
+  },
+  methods: {
+    focusHandler() {
+      if (this.focus) {
+        this.$refs.input.focus();
+      }
     },
   },
   mounted() {
     this.$refs.input.onblur = () => {
-      this.$emit('update:focus', false)
-    }
+      this.$emit("update:focus", false);
+    };
     this.$refs.input.onfocus = () => {
-      this.$emit('update:focus', true)
-    }
+      this.$emit("update:focus", true);
+    };
+    this.focusHandler()
   },
   watch: {
     focus: {
-      handler: function (val) {
-        if (val) {
-          this.$refs.input.focus()
-        }
-      }
+      handler: function () {
+        this.focusHandler()
+      },
     },
     modelValue: {
       handler: function (val) {
-        this.inputValue = val
+        this.inputValue = val;
       },
       immediate: true,
     },
     inputValue: {
       handler: function (val) {
-        this.$emit('update:modelValue', val)
+        this.$emit("update:modelValue", val);
       },
       immediate: true,
     },
   },
-})
+});
 </script>
 
 <style module lang="scss">
