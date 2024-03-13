@@ -1,0 +1,17 @@
+.context-menu {
+  position: absolute;
+  padding: 4px;
+  background-color: $gray500;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.context-menu__item {
+  padding: 8px;
+  white-space: nowrap;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: $gray400;
+  }
+}

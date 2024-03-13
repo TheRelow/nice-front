@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Folder } from "./types";
 
-const folderActions = [{ title: "Add new folder", action: () => {} }];
+const folderActions = [{ title: "Add new folder", action: () => {} }, { title: "Edit", action: () => {} }];
 
 const props = defineProps<{
   folder: Folder;
@@ -92,20 +92,26 @@ function drop(event: any) {
       <div class="folders-list__item-content-title">
         {{ folder.title }}
       </div>
-      <BaseIcon
-        class="folders-list__item-settings folders-list__item-control"
-        color="inherit"
-        icon="dots-horizontal"
-      ></BaseIcon>
+      <base-context-menu :actions="folderActions">
+        <template #activator="{ props }">
+          <BaseIcon
+            class="folders-list__item-settings folders-list__item-control"
+            color="inherit"
+            icon="dots-horizontal"
+            v-bind="props"
+          ></BaseIcon>
+        </template>
+      </base-context-menu>
     </div>
     <div
       class="folders-list__item-drag-handler"
-      :class="{active: isDropPlace}"
+      :class="{ active: isDropPlace }"
       ondragover="event.preventDefault()"
       @drop="drop"
       @dragenter="dragenter"
       @dragleave="dragleave"
     ></div>
     <FoldersList :list="folder.list" :isRoot="false" v-if="isOpened" />
+    <base-popup></base-popup>
   </li>
 </template>
