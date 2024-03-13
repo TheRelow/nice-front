@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import type { Folder } from "./types";
 
-const folderActions = [{ title: "Add new folder", action: () => {} }, { title: "Edit", action: () => {} }];
+const folderActions = [
+  {
+    title: "Add new folder",
+    action: () => {
+      createFolderId.value = props.folder.id;
+    },
+  },
+  { title: "Edit", action: () => {} },
+];
 
 const props = defineProps<{
   folder: Folder;
@@ -11,6 +19,22 @@ const emit = defineEmits(["change"]);
 
 const isOpened = ref(false);
 const dragTarget = ref(false);
+
+const createFolderId = ref<number | false | null>(false);
+const isCreateFolderOpened = computed<boolean>({
+  get() {
+    return createFolderId.value !== false;
+  },
+  set(val) {
+    if (val === false) createFolderId.value = false;
+  },
+});
+const createFolderTitle = ref('')
+function createFolder() {
+  console.log(`create folder [${createFolderTitle.value}] in ${createFolderId.value}`);
+  createFolderId.value = false
+  createFolderTitle.value = ''
+}
 
 const isEmpty = computed(() => {
   return props.folder.id !== null && props.folder.list.length === 0;
@@ -112,6 +136,9 @@ function drop(event: any) {
       @dragleave="dragleave"
     ></div>
     <FoldersList :list="folder.list" :isRoot="false" v-if="isOpened" />
-    <base-popup></base-popup>
+    <base-popup class="create-folder-popup" v-model="isCreateFolderOpened">
+      <base-input v-model="createFolderTitle" />
+      <base-button @click="createFolder">create</base-button>
+    </base-popup>
   </li>
 </template>

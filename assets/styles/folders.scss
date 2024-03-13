@@ -93,3 +93,13 @@
     display: block;
   }
 }
+
+.create-folder-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  padding: 24px;
+  gap: 12px;
+}
