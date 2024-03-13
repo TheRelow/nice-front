@@ -14,7 +14,3 @@ const navAppSettings = ref()
     </li>
   </ul>
 </template>
-
-<style scoped>
-
-</style>

@@ -12,7 +12,3 @@ definePageMeta({
     </BaseButtonsList>
   </div>
 </template>
-
-<style scoped>
-
-</style>

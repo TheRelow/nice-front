@@ -11,7 +11,3 @@ definePageMeta({
     <BaseButton tag="nuxt-link" :to="{name: 'packages'}">{{ $t('Packages') }}</BaseButton>
   </BaseButtonsList>
 </template>
-
-<style scoped>
-
-</style>

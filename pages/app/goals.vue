@@ -7,7 +7,3 @@ definePageMeta({
 <template>
   <h1>{{ $t('Goals') }}</h1>
 </template>
-
-<style scoped>
-
-</style>

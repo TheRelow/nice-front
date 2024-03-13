@@ -7,7 +7,3 @@ definePageMeta({
 <template>
   <h1>@nuxt/i18n</h1>
 </template>
-
-<style scoped>
-
-</style>

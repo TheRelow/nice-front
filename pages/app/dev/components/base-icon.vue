@@ -13,7 +13,3 @@ const check = ref(false)
     Search
   </BaseButton>
 </template>
-
-<style scoped>
-
-</style>

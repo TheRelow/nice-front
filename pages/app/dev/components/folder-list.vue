@@ -10,7 +10,3 @@ definePageMeta({
   name: 'component_folder-list'
 })
 </script>
-
-<style scoped>
-
-</style>

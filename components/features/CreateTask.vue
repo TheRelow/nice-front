@@ -14,18 +14,3 @@ function createTask() {
     <base-button @click="createTask">create</base-button>
   </form>
 </template>
-
-<style scoped lang="scss">
-.create-task {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  gap: 12px;
-}
-.create-task__input {
-  height: 32px;
-  flex-grow: 1;
-  padding: 0 12px;
-  border: 1px solid $gray200;
-}
-</style>

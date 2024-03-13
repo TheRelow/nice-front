@@ -24,9 +24,3 @@ const doneTasks = computed((): Task[]=>{
     <TaskList :tasks="doneTasks"></TaskList>
   </div>
 </template>
-
-<style scoped>
-.task-page {
-  width: 100%;
-}
-</style>

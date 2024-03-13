@@ -1,47 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "default";
 
-:root {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.2;
-  font-weight: 400;
+@import "layout";
 
-  color: $gray500;
+// base-components
+@import "base-components/buttons";
+@import "base-components/button";
+@import "base-components/checkbox";
+@import "base-components/icon";
+@import "base-components/overlay";
+@import "base-components/popup";
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+// pages
+@import "pages/task";
+@import "pages/folder";
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 1em 0 0.5em;
-}
-
-p {
-  margin: 0.5em 0;
-}
-
-a {
-  font-weight: 500;
-  color: $primary;
-  text-decoration: inherit;
-}
-a:hover {
-  color: $primary600;
-}
-
-.wrapper {
-  width: 1280px;
-  margin: 0 auto;
-}
-
-.block-user-select {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+@import "tasks";
+@import "folders";

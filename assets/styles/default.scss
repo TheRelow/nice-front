@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+
+  color: $gray500;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 1em 0 0.5em;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+a {
+  font-weight: 500;
+  color: $primary;
+  text-decoration: inherit;
+}
+a:hover {
+  color: $primary600;
+}
+
+.wrapper {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.block-user-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

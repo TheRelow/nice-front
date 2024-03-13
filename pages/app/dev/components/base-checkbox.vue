@@ -10,7 +10,3 @@ const check = ref(false)
   <h1>BaseCheckbox</h1>
   <BaseCheckbox v-model="check"></BaseCheckbox>
 </template>
-
-<style scoped>
-
-</style>

@@ -7,7 +7,3 @@ definePageMeta({
 <template>
   <h1>Gsap</h1>
 </template>
-
-<style scoped>
-
-</style>

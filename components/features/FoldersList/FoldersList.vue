@@ -40,12 +40,3 @@ watch(
     <FoldersListItem v-for="folder of folders" :key="folder.id" :folder="folder" />
   </ul>
 </template>
-
-<style scoped lang="scss">
-.folders-list {
-  list-style: none;
-  .folders-list {
-    padding-left: 15px;
-  }
-}
-</style>
