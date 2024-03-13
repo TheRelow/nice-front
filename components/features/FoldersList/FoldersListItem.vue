@@ -9,6 +9,7 @@ const folderActions = [
     },
   },
   { title: "Edit", action: () => {} },
+  { title: "Delete", action: () => {} },
 ];
 
 const props = defineProps<{
@@ -31,8 +32,10 @@ const isCreateFolderOpened = computed<boolean>({
 });
 const createFolderTitle = ref('')
 function createFolder() {
-  store.folder.
-  console.log(`create folder [${createFolderTitle.value}] in ${createFolderId.value}`);
+  store.folder.createFolder({
+    title: createFolderTitle.value,
+    parentId: createFolderId.value,
+  })
   createFolderId.value = false
   createFolderTitle.value = ''
 }

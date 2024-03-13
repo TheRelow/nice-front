@@ -35,9 +35,9 @@ export function useCrudApi<T extends Resource<any>>(resourceList: Ref<T[]>, api:
     }
   }
 
-  async function createResource(title: string): Promise<T> {
+  async function createResource(data: Partial<T>): Promise<T> {
     try {
-      const resource = await api.create(title);
+      const resource = await api.create(data);
       resourceList.value.push(resource);
       return resource;
     } catch (error) {

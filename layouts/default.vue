@@ -89,7 +89,7 @@ await useAsyncData("tasks", () => folderStore.loadAllFolders());
     </div>
     <div class="section">
       <div class="section__settings" :style="`width: ${sidebarWidth}px`">
-        <FoldersList style="margin: 0 -18px" />
+        <FoldersList style="margin: 0 -18px" :list="store.folder.folderListWithNesting" />
         <div
           class="section__resizer"
           @mousedown="resizerMousedownHandler"

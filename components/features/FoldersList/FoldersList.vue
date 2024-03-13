@@ -9,7 +9,7 @@ const props = withDefaults(
   }>(),
   {
     list() {
-      return store.folder.folderListWithNesting;
+      return [];
     },
     isRoot: true,
   }
@@ -19,12 +19,14 @@ const folders = ref<(Folder | RootFolder)[]>([]);
 watch(
   () => props.list,
   (val) => {
+    console.log('val');
+    
     if (props.isRoot) {
       folders.value = [
         {
           id: null,
           title: 'root',
-          list: props.list,
+          list: _.cloneDeep(val),
         }
       ]
     } else {
@@ -37,6 +39,6 @@ watch(
 
 <template>
   <ul class="folders-list">
-    <FoldersListItem v-for="folder of folders" :key="folder.id" :folder="folder" />
+    <FoldersListItem v-for="folder of folders" :key="folder.id || 'root'" :folder="folder" />
   </ul>
 </template>
