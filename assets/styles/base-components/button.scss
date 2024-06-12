@@ -77,24 +77,8 @@
   }
 }
 
-.button_rounding {
-  border-radius: 500px;
-}
-
-.button_rounding_icon {
-  width: $buttonHeight;
-  height: $buttonHeight;
-  padding: 0;
-
-  &.button_size_s {
-    width: $buttonHeightS;
-    height: $buttonHeightS;
-  }
-
-  &.button_size_s {
-    width: $buttonHeightXS;
-    height: $buttonHeightXS;
-  }
+.button_rounding_off {
+  border-radius: 0;
 }
 
 .button_color {

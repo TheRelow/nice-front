@@ -1,19 +1,32 @@
 <template>
-  <BaseOverlay v-model="model">
-    <div :class="`popup ${props.class}`" @click="$event.stopPropagation()">
-      <slot></slot>
-    </div>
-  </BaseOverlay>
+  <teleport to="body">
+
+  </teleport>
 </template>
 
 <script lang="ts" setup>
 const emit = defineEmits(['closed'])
-const props = defineProps<{
-  class: string
-}>()
+const props = withDefaults(defineProps<{
+  target: string,
+  assignTo: string,
+  position: string,
+  width: string,
+  minWidth: string,
+  maxWidth: string,
+  height: string,
+  minHeight: string,
+  maxHeight: string,
+  openBy: string,
+  offset: number,
+  screenOffset: [number, number, number, number],
+  autoClose: boolean,
+  followCursor: boolean,
+}>(), {
+
+})
 const model = defineModel()
 
-watch(model, (val) => {
-  if (val === false) emit('closed')
+watch(model, (val: boolean) => {
+  if (!val) emit('closed')
 })
 </script>

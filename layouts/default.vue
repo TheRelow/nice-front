@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import _ from "lodash";
 import type { changeEvent } from "@/components/features/FoldersList/types";
 import { useFolderStore } from "~/store/folderStore";
 

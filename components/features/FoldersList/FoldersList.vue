@@ -19,8 +19,6 @@ const folders = ref<(Folder | RootFolder)[]>([]);
 watch(
   () => props.list,
   (val) => {
-    console.log('val');
-    
     if (props.isRoot) {
       folders.value = [
         {

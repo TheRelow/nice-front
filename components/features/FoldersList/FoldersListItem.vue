@@ -9,7 +9,7 @@ const folderActions = [
     },
   },
   { title: "Edit", action: () => {} },
-  { title: "Delete", action: () => {} },
+  { title: "Delete", action: () => store.folder.deleteFolder(props.folder.id) },
 ];
 
 const props = defineProps<{
@@ -95,7 +95,7 @@ function drop(event: any) {
       class="folders-list__item-content"
       :class="{
         'folders-list__item-content_drag-target': dragTarget,
-        opened: store.folder.activeFolder === props.folder.id,
+        opened: store.folder.activeFolderId === props.folder.id,
       }"
       @dragstart="dragStart"
       @dragend="dragEnd"

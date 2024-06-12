@@ -14,7 +14,7 @@ const props = defineProps({
   },
   rounding: {
     type: [Boolean, String],
-    default: false,
+    default: true,
   },
   tag: {
     type: String,
@@ -58,8 +58,8 @@ const classes = computed((): string[] => {
   if (props.type !== "primary") {
     classList.push(`button_type_${props.type}`);
   }
-  if (props.rounding !== false) {
-    classList.push('button_rounding');
+  if (props.rounding === false) {
+    classList.push('button_rounding_off');
   }
   if (typeof props.rounding === "string") {
     classList.push(`button_rounding_${props.rounding}`);
